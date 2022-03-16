@@ -1,8 +1,6 @@
 const fs = require('fs');
-fs.readdir('tutorial', (err,files) => {
-  if (err){
-    console.log(err)
-  } else {
-    console.log(files)
-  }
+const readStream = fs.createReadStream('./exmaple.txt', 'utf8')
+const writeStream = fs.createWriteStream('exampleWrite.txt')
+readStream.on('data', (chunk)=>{
+  writeStream.write(chunk)
 })
